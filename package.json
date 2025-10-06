@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":"tsup ./src --out-dir build ",
-    "start":"node ./build",
-    "dev":"tsx watch ./src/server.ts"
+    "build": "tsup ./src --out-dir build ",
+    "start": "node ./build",
+    "dev": "tsx watch ./src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@rocketseat/eslint-config": "2.2.2",
     "@types/node": "24.7.0",
+    "eslint": "9.37.0",
     "tsx": "4.20.6",
     "typescript": "5.9.3"
   },

@@ -42,5 +42,8 @@
     "skipLibCheck": true,
     "noEmit": true,
     "allowImportingTsExtensions": true,
+    "paths": {
+      "@/*":["./src/*"]
+    }
   }
 }
