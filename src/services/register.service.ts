@@ -1,8 +1,8 @@
-// eslint-disable-next-line @stylistic/max-len
 import { PrismaUsersRepository } from '@/repositories/prisma/prisma-users-repository.ts'
-// eslint-disable-next-line @stylistic/max-len
+
 import type { UserRepositoryInterface } from '@/repositories/userRepositoryInterface.ts'
 import { hash } from 'bcrypt'
+import { UserEmailExist } from './errors/user-email-exist.ts'
 
 interface RegisterReq {
   name: string,
@@ -18,7 +18,7 @@ export class RegisterService {
 
     const emailWithSameUser = await prismaUsersRepository.findByEmail(email)
     if (emailWithSameUser) {
-      throw new Error()
+      throw new UserEmailExist()
     }
 
     const passwordHash = await hash(password, 6)
