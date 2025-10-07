@@ -1,5 +1,7 @@
 // eslint-disable-next-line @stylistic/max-len
-import { PrismaUsersRepository } from '@/repositories/prisma-users-repository.ts'
+import { PrismaUsersRepository } from '@/repositories/prisma/prisma-users-repository.ts'
+// eslint-disable-next-line @stylistic/max-len
+import type { UserRepositoryInterface } from '@/repositories/userRepositoryInterface.ts'
 import { hash } from 'bcrypt'
 
 interface RegisterReq {
@@ -8,21 +10,24 @@ interface RegisterReq {
   password: string
 }
 
-export async function registerService({ email, name, password }:RegisterReq) {
-  const prismaUsersRepository = new PrismaUsersRepository()
+export class RegisterService {
+  public constructor(private registerRepository:UserRepositoryInterface) {}
 
-  const emailWithSameUser = await prismaUsersRepository.findByEmail(email)
+  async execute({ email, name, password }:RegisterReq) {
+    const prismaUsersRepository = new PrismaUsersRepository()
 
-  if (emailWithSameUser) {
-    throw new Error()
+    const emailWithSameUser = await prismaUsersRepository.findByEmail(email)
+    if (emailWithSameUser) {
+      throw new Error()
+    }
+
+    const passwordHash = await hash(password, 6)
+
+    await prismaUsersRepository.create({
+      name,
+      email,
+      password_hash: passwordHash,
+    },
+    )
   }
-
-  const passwordHash = await hash(password, 6)
-
-  await prismaUsersRepository.create({
-    name,
-    email,
-    password_hash: passwordHash,
-  },
-  )
 }
