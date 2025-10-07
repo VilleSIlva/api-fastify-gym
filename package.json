@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "@prisma/client": "6.16.3",
+    "@types/bcrypt": "6.0.0",
+    "bcrypt": "6.0.0",
     "dotenv": "17.2.3",
     "fastify": "5.6.1",
     "tsup": "8.5.0",
