@@ -18,13 +18,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@rocketseat/eslint-config": "2.2.2",
+    "@rocketseat/eslint-config": "3.0.12",
     "@types/node": "24.7.0",
     "eslint": "9.37.0",
+    "prisma": "6.16.3",
     "tsx": "4.20.6",
     "typescript": "5.9.3"
   },
   "dependencies": {
+    "@prisma/client": "6.16.3",
     "dotenv": "17.2.3",
     "fastify": "5.6.1",
     "tsup": "8.5.0",

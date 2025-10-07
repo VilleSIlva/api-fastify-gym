@@ -1,0 +1,12 @@
+# Use postgres/example user/password credentials
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: users
+      POSTGRES_DB: gym
+    ports:
+      - 5432:5432
