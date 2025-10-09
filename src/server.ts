@@ -14,6 +14,6 @@ app.setErrorHandler((error, req, res) => {
   return res.status(500).send({ message: error.message })
 })
 
-app.listen({ port: env.PORT }).then(() => {
+app.listen({ port: env.PORT, host: '0.0.0.0' }).then(() => {
   console.log(`Running na porta ${env.PORT}`)
 })
